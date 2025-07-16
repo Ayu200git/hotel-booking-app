@@ -1,0 +1,26 @@
+<% layout("/layouts/boilerplate") %>
+<div class="row page-wrapper">
+    <h1 class="col-7 offset-3">Signup Here</h1>
+    <div class="col-6 offset-1 form-card animated-form">
+        <form method="post" action="/signup">
+            <div class="mb-3">
+                <label for="username" class="form-label" >Username</label>
+                <input type="text" id="username" name="username" class="form-control" >
+                <br>
+                <label for="email" class="form-label" >Email</label>
+                <input type="email" id="email" name="email" class="form-control" ><br>
+                <label for="password" class="form-label" >Password</label>
+                <input type="password" id="password" name="password" class="form-control" > 
+          </div>
+          <label for="role" class="form-label">Register as:</label>
+                <select name="role" id="role" class="form-select" required>
+                    <option value="user" selected>Guest</option>
+                    <option value="owner">Hotel Owner</option>
+                </select>
+                <br>
+            <button class="col-3 offset-4 fancy-btn">Sign Up</button>
+
+        </form>
+        <br> <br>
+    </div>
+</div>

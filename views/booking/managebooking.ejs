@@ -1,0 +1,22 @@
+<% layout('layouts/boilerplate') %>
+<h3>Manage Booking Requests</h3>
+<% if(bookings.length == 0){ %>
+    <p>No booking request yet.</p>
+<% } else { %>    
+     <% bookings.forEach(booking => { %>
+         <div class="card my-2 p-3">
+          <h5><%= booking.listing.title %></h5>
+          <p>Requested by: <%= booking.user.username %></p>
+          <p><%= booking.startDate.toDateString() %> to <%= booking.endDate.toDateString() %></p>
+          <p>Status: <%= booking.status %></p>
+
+          <% if (booking.status === 'Pending') { %>
+              <form method="POST" action="/booking/<%= booking._id %>/decision">
+                 <button name="decision" value="Confirmed" class="btn btn-success btn-sm">Confirm</button>
+                 <button name="decision" value="Denied" class="btn btn-danger btn-sm">Deny</button>
+              </form>
+          <% } %>
+          </div>
+     <% }) %>
+<% } %>    
+

@@ -1,0 +1,14 @@
+<% layout('layouts/boilerplate') %>
+<h3>My Bookings</h3>
+
+<% bookings.forEach(booking => { %>
+  <div class="card my-2 p-3">
+    <% if(booking.listing){ %>
+         <h5><%= booking.listing.title %></h5>
+         <% } else { %>
+          <h5>Listing Deleted</h5>
+         <% } %>
+         <p><%= booking.startDate.toDateString() %> to <%= booking.endDate.toDateString() %></p>
+         <span>Status: <%= booking.status %></span>
+  </div>
+<% }) %>

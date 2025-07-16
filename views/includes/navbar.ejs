@@ -1,0 +1,56 @@
+<style>
+  .btn-search{
+     background-color: rgb(169, 138, 198);
+     color: rgb(74, 60, 60);
+     border-radius: 15px;
+  }
+  .inp{
+     border-radius: 15px;
+  }
+</style>
+<nav class="navbar navbar-expand-md bg-body-tertiary border-bottom sticky-top  ">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/listings"><i class="fa-solid fa-hotel"></i></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a class="nav-link" href="/listings"><b>Explore</b></a>
+      </div>  
+      <br>
+      <br>
+      <div>
+        <h6>Find Your Perfect Stay! </h6>
+      </div>
+      <br>
+      <br>
+      <br> 
+        
+      <div class="navbar-nav ms-auto">
+          <form class="d-flex" role="search" action="/listings/search" method="GET">
+             <input class="form-control ms-auto inp" type="search" placeholder="Search" aria-label="Search" name="q" />
+             <button class="btn btn-search" type="submit"><i class="fa-brands fa-searchengin"></i></button>
+          </form>
+      </div>
+      
+       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav ms-auto">
+        <% if(currUser && (currUser.role === "owner" || currUser.role === "admin")) { %>
+              <a class="nav-link" aria-current="page" href="/listings/new"><b>Add your Hotel</b></a>
+         <% } %>
+        <% if(!currUser){ %>
+           <a class="nav-link" aria-current="page" href="/signup"><b>Sign Up</b></a>
+            <a class="nav-link" href="/login"><b>Login</b></a>
+        <% } %>
+        <% if(currUser){ %>
+          <a class="nav-link" href="/booking/my">My Bookings</a>
+          <a class="nav-link" href="/booking/manage">Manage Bookings</a>
+          <a class="nav-link" href="/wishlist"><b>Wishlist ❤️</b></a>  
+          <a class="nav-link" href="/logout"><b>Logout</b></a>
+        <% } %>
+
+      </div>
+    </div>
+  </div>
+</nav>
