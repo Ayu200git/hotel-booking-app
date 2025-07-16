@@ -95,6 +95,11 @@ app.use("/",usersRouter);
 app.use("/wishlist", wishlistRouter);
 app.use("/booking", bookingRouter);
 
+app.get("/", (req, res) => {
+  res.redirect("/listings");
+});
+
+
 app.use((err, req, res, next) => {
   let { status = 500, message = "Something went wrong" } = err;
   res.status(status).render("error.ejs", { message });
